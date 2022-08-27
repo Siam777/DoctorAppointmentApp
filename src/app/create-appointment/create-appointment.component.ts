@@ -12,7 +12,9 @@ export class CreateAppointmentComponent implements OnInit {
   appointmnetForm: FormGroup;
 
   currentYear = new Date().getFullYear();
-  minDate = new Date(this.currentYear, 0, 1);
+  currentMonth = new Date().getMonth();
+  currentDay = new Date().getDate();
+  minDate = new Date(this.currentYear, this.currentMonth, this.currentDay);
   maxDate = new Date(this.currentYear, 11, 31);
 
   constructor(

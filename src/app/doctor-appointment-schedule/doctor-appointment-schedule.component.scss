@@ -42,9 +42,27 @@ mat-form-field {
 }
 
 .scheduleBtn{
-    margin-left: 10%;
+    //margin-left: 10%;
+    margin-top: 2%;
+    float: right;
 }
 
 .text-center{
     text-align: center;
 }
+
+.divMonth {
+    width: 40%;
+    align-items: left;  
+}
+
+.divBtn{
+    width: 50%;
+    align-items: right; 
+}
+
+.width-100 {
+    width: 100%;
+    display: flex;
+}
+

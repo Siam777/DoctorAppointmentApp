@@ -2,38 +2,32 @@
     <form [formGroup]="appointmnetForm" (ngSubmit)="onSubmit()" fxLayout="column">
         <mat-form-field [hideRequiredMarker]="false">
             <input matInput placeholder="First Name" formControlName="firstName" required>
-            <ng-container *ngIf="firstName?.invalid && firstName?.touched && firstName?.errors">
-                <mat-error *ngIf="firstName?.errors?.required">
-                    Firstname is required
-                </mat-error>
-                <mat-error *ngIf="firstName?.errors?.maxlength">
-                    Firstname can not exceed 40 characters
-                </mat-error>
-            </ng-container>
-
+            <mat-error *ngIf="firstName?.invalid && firstName?.touched && firstName?.errors?.required">
+                Firstname is required
+            </mat-error>
+            <mat-error *ngIf="firstName?.invalid && firstName?.touched && firstName?.errors?.maxlength">
+                Firstname can not exceed 40 characters
+            </mat-error>
         </mat-form-field>
+
         <mat-form-field>
             <input matInput placeholder="Last Name" formControlName="lastName" required>
-            <ng-container *ngIf="lastName?.invalid && lastName?.touched && lastName?.errors">
-                <mat-error *ngIf="lastName?.errors?.required">
-                    LastName is required
-                </mat-error>
-                <mat-error *ngIf="lastName?.errors?.maxlength">
-                    LastName can not exceed 40 characters
-                </mat-error>
-            </ng-container>
+            <mat-error *ngIf="lastName?.invalid && lastName?.touched && lastName?.errors?.required">
+                LastName is required
+            </mat-error>
+            <mat-error *ngIf="lastName?.invalid && lastName?.touched && lastName?.errors?.maxlength">
+                LastName can not exceed 40 characters
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field>
             <input type="text" matInput placeholder="Email" formControlName="email" required>
-            <ng-container *ngIf="email?.invalid && email?.touched && email?.errors">
-                <mat-error *ngIf="email?.errors?.required">
-                    Email is required
-                </mat-error>
-                <mat-error *ngIf="email?.errors?.email">
-                    Invaild email
-                </mat-error>
-            </ng-container>
+            <mat-error *ngIf="email?.invalid && email?.touched && email?.errors?.required">
+                Email is required
+            </mat-error>
+            <mat-error *ngIf="email?.invalid && email?.touched && email?.errors?.email">
+                Invaild email
+            </mat-error>          
         </mat-form-field>
 
         <div class="genderblock">
@@ -46,35 +40,32 @@
         </div>
         <mat-form-field>
             <input type="number" matInput placeholder="Age" formControlName="age">
-            <ng-container *ngIf="age?.invalid && age?.touched && age?.errors">
-                <mat-error *ngIf="age?.errors?.min">
-                    Age must be greater than 0
-                </mat-error>
-            </ng-container>
+            <mat-error *ngIf="age?.invalid && age?.touched && age?.errors?.min">
+                Age must be greater than 0
+            </mat-error>            
         </mat-form-field>
+
         <mat-form-field>
             <mat-label>Appointment Date</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="date" [min]="minDate" [max]="maxDate" required>     
-            <mat-hint>MM/DD/YYYY</mat-hint>     
+            <input matInput [matDatepicker]="picker" formControlName="date" [min]="minDate" [max]="maxDate" required>
+            <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-            <ng-container *ngIf="date?.invalid && date?.touched && date?.errors">
-                <mat-error *ngIf="date?.errors?.required">
-                   Appointment date is required
-                </mat-error>
-            </ng-container>
+
+            <mat-error *ngIf="date?.invalid && date?.touched && date?.errors?.required">
+                Appointment date is required
+            </mat-error>            
         </mat-form-field>
-        <mat-form-field>
+
+        <mat-form-field class="mt-6px mb-6px">
             <mat-label>Appointment Time</mat-label>
             <input matInput type="time" formControlName="time" required>
-            <ng-container *ngIf="time?.invalid && time?.touched && time?.errors">
-                <mat-error *ngIf="time?.errors?.required">
-                   Appointment time is required
-                </mat-error>
-            </ng-container>
+            <mat-error *ngIf="time?.invalid && time?.touched && time?.errors?.required">
+                Appointment time is required
+            </mat-error>          
         </mat-form-field>
         <button mat-raised-button [disabled]="appointmnetForm?.invalid" color="primary" type="submit">Save
             Appointment</button>
-        <button mat-raised-button class="ml-4px" color="warn" type="button" (click)="onCloseClick()">Close</button>
+        <button mat-raised-button class="float-right" color="warn" type="button" (click)="onCloseClick()">Close</button>
     </form>
 </div>

@@ -1,17 +1,23 @@
-<div> 
-    <mat-form-field>
-        <mat-label>Month</mat-label>
-        <mat-select [(value)]="selectedMonth" (selectionChange)="monthChanged($event)">
-            <mat-option *ngFor="let month of months" [value]="month.sequenceNo">
-                {{month.name}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
-    <button class="scheduleBtn" mat-raised-button color="primary" (click)="openAppointmentDialog()">Create Appointment</button>
+<div class="width-100"> 
+    <div class="divMonth">
+        <mat-form-field>
+            <mat-label>Month</mat-label>
+            <mat-select [(value)]="selectedMonth" (selectionChange)="monthChanged($event)">
+                <mat-option *ngFor="let month of months" [value]="month.sequenceNo">
+                    {{month.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    
+    <div class="divBtn">
+        <button class="scheduleBtn" mat-raised-button color="primary" (click)="openAppointmentDialog()">Create Appointment</button>
+    </div>
+    
 </div>
 
 <div>  
-     <mat-grid-list cols="7" rowHeight="6:1">
+     <mat-grid-list cols="7" rowHeight="4:1">
         <mat-grid-tile class="dayNameGrid" *ngFor="let dayname of dayNames">
             <mat-label class="dayName">{{dayname}}</mat-label>
         </mat-grid-tile>
