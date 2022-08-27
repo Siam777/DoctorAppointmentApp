@@ -31,7 +31,7 @@ export class DoctorAppointmentScheduleComponent implements OnInit {
 
   selectedAppointment!: Appointment;
 
- 
+
   constructor(
     private localStorageService: LocalStorageService,
     private router: Router,
@@ -45,7 +45,7 @@ export class DoctorAppointmentScheduleComponent implements OnInit {
 
     this.activatedRoute.params.subscribe((param: Params) => {
       let monthNo = param['monthNo'];
-      if (monthNo != null) {       
+      if (monthNo != null) {
         this.selectedMonth = parseInt(monthNo);
         this.getDaynames();
         this.getDaysIncludingAppoinment(monthNo);
@@ -64,22 +64,21 @@ export class DoctorAppointmentScheduleComponent implements OnInit {
   }
 
   openAppointmentDialog() {
-    let dialogRef = this.dialoig.open(CreateAppointmentComponent,{data: {selectedMonth: this.selectedMonth}});
-    dialogRef.afterClosed().subscribe(response => {     
+    let dialogRef = this.dialoig.open(CreateAppointmentComponent, { data: { selectedMonth: this.selectedMonth } });
+    dialogRef.afterClosed().subscribe(response => {
       if (!response) {
         return;
       }
       let newAppointment = response;
       if (newAppointment.firstName != '') {
         this.localStorageService.addNewAppointment(newAppointment, 'appointments');
-       // alert('Appointment created successfully');
         let snackbarRef = this.snackBar.open("Appointment created successfully", '',
-            {
-              duration: 5000,
-              panelClass: ['snackbar-success'],
-              horizontalPosition: 'right',
-              verticalPosition: 'top'
-            });
+          {
+            duration: 2000,
+            panelClass: ['snackbar-success'],
+            horizontalPosition: 'right',
+            verticalPosition: 'top'
+          });
         this.addNewAppointmentAfterSave(newAppointment);
       }
     })
@@ -135,7 +134,6 @@ export class DoctorAppointmentScheduleComponent implements OnInit {
       return (day === apDay && this.selectedMonth === apMonth && this.currentYear === apYear) ? apment : null;
     });
 
-
     return selectedAppointments;
   }
 
@@ -145,6 +143,5 @@ export class DoctorAppointmentScheduleComponent implements OnInit {
       data: appInfo
     });
   }
-
-
+  
 }
