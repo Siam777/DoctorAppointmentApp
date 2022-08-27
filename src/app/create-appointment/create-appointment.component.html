@@ -1,0 +1,79 @@
+<div fxLayoutAlign="center center" fxFlexFill fxFlex="100">
+    <form [formGroup]="appointmnetForm" (ngSubmit)="onSubmit()" fxLayout="column">
+        <mat-form-field [hideRequiredMarker]="false">
+            <input matInput placeholder="First Name" formControlName="firstName" required>
+            <ng-container *ngIf="firstName?.invalid && firstName?.touched && firstName?.errors">
+                <mat-error *ngIf="firstName?.errors?.required">
+                    Firstname is required
+                </mat-error>
+                <mat-error *ngIf="firstName?.errors?.maxlength">
+                    Firstname can not exceed 40 characters
+                </mat-error>
+            </ng-container>
+
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Last Name" formControlName="lastName" required>
+            <ng-container *ngIf="lastName?.invalid && lastName?.touched && lastName?.errors">
+                <mat-error *ngIf="lastName?.errors?.required">
+                    LastName is required
+                </mat-error>
+                <mat-error *ngIf="lastName?.errors?.maxlength">
+                    LastName can not exceed 40 characters
+                </mat-error>
+            </ng-container>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input type="text" matInput placeholder="Email" formControlName="email" required>
+            <ng-container *ngIf="email?.invalid && email?.touched && email?.errors">
+                <mat-error *ngIf="email?.errors?.required">
+                    Email is required
+                </mat-error>
+                <mat-error *ngIf="email?.errors?.email">
+                    Invaild email
+                </mat-error>
+            </ng-container>
+        </mat-form-field>
+
+        <div class="genderblock">
+            <mat-label>Gender: </mat-label>
+            <mat-radio-group aria-label="Select an option" formControlName="gender">
+                <mat-radio-button value="MALE" class="gender-item">Male</mat-radio-button>
+                <mat-radio-button value="FEMALE" class="gender-item">Female</mat-radio-button>
+                <mat-radio-button value="OTHERS" class="gender-item">Others</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <mat-form-field>
+            <input type="number" matInput placeholder="Age" formControlName="age">
+            <ng-container *ngIf="age?.invalid && age?.touched && age?.errors">
+                <mat-error *ngIf="age?.errors?.min">
+                    Age must be greater than 0
+                </mat-error>
+            </ng-container>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Appointment Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="date" [min]="minDate" [max]="maxDate" required>          
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <ng-container *ngIf="date?.invalid && date?.touched && date?.errors">
+                <mat-error *ngIf="date?.errors?.required">
+                   Appointment date is required
+                </mat-error>
+            </ng-container>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Appointment Time</mat-label>
+            <input matInput type="time" formControlName="time" required>
+            <ng-container *ngIf="time?.invalid && time?.touched && time?.errors">
+                <mat-error *ngIf="time?.errors?.required">
+                   Appointment time is required
+                </mat-error>
+            </ng-container>
+        </mat-form-field>
+        <button mat-raised-button [disabled]="appointmnetForm?.invalid" color="primary" type="submit">Save
+            Appointment</button>
+        <button mat-raised-button class="ml-4px" color="warn" type="button" (click)="onCloseClick()">Close</button>
+    </form>
+</div>

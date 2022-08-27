@@ -1,0 +1,33 @@
+<div> 
+    <mat-form-field>
+        <mat-label>Month</mat-label>
+        <mat-select [(value)]="selectedMonth" (selectionChange)="monthChanged($event)">
+            <mat-option *ngFor="let month of months" [value]="month.sequenceNo">
+                {{month.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button class="scheduleBtn" mat-raised-button color="primary" (click)="openAppointmentDialog()">Create Appointment</button>
+</div>
+
+<div>  
+     <mat-grid-list cols="7" rowHeight="6:1">
+        <mat-grid-tile class="dayNameGrid" *ngFor="let dayname of dayNames">
+            <mat-label class="dayName">{{dayname}}</mat-label>
+        </mat-grid-tile>
+    </mat-grid-list>
+    <mat-divider></mat-divider>
+    <mat-grid-list cols="7" rowHeight="2:1">
+        <mat-grid-tile [ngClass]="{
+            'dayNoGrid' : apday.appointments.length==0,
+            'background-appointment' : apday.appointments.length>0
+        }" *ngFor="let apday of appoinmentDays">
+            <div class="dayNumber">{{apday.dayNumber}}</div>
+            <div class="appointmentContent text-center">
+                <button class="appointmentDetailbtn" (click)="appointmentDetail(appointment)" *ngFor="let appointment of apday.appointments">
+                    Appointment: {{(appointment.firstName?.toString() + ' ' + appointment.lastName?.toString()) | slice:0:5}}..
+                </button>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

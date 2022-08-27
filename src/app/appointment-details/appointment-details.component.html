@@ -1,0 +1,38 @@
+<div class="details" *ngIf="this.selectedAppointment">
+    <div class="width-100">
+        <mat-label class="detailsProperty"><b>First Name</b> </mat-label>
+        <mat-label class="detailsProperty">: {{this.selectedAppointment.firstName}} </mat-label>
+    </div>
+
+    <div class="width-100">
+        <mat-label class="detailsProperty"><b>Last Name</b></mat-label>
+        <mat-label class="detailsProperty">: {{this.selectedAppointment.lastName}} </mat-label>
+    </div>
+
+    <div class="width-100">
+        <mat-label class="detailsProperty"><b>Email</b> </mat-label>
+        <mat-label class="detailsProperty">: {{this.selectedAppointment.email}} </mat-label>
+    </div>
+
+    <div class="width-100">
+        <mat-label class="detailsProperty"><b>Gender</b> </mat-label>
+        <mat-label class="detailsProperty">: {{this.selectedAppointment.gender | titlecase}} </mat-label>
+    </div>
+
+    <div class="width-100">
+        <mat-label class="detailsProperty"><b>Age</b> </mat-label>
+        <mat-label class="detailsProperty">: {{this.selectedAppointment.age}} </mat-label>
+    </div>
+
+    <div class="width-100">
+        <mat-label class="detailsProperty"><b>Date</b></mat-label>
+        <mat-label class="detailsProperty">:  {{this.selectedAppointment.date.toString() | date:'MMM d , y'}} </mat-label>
+    </div>
+  
+    <div class="width-100">
+        <mat-label class="detailsProperty"><b>Time</b> </mat-label>
+        <mat-label class="detailsProperty">:  {{this.selectedAppointment.time.toString() | timeTransformTo12H}} </mat-label>
+    </div>
+  
+    <button class="float-right" mat-raised-button color="warn" mat-dialog-close>Close</button>
+</div>

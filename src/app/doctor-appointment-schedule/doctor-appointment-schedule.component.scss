@@ -1,0 +1,50 @@
+.dayNameGrid{
+   border: none;
+}
+
+.dayNoGrid{
+    border: 1px solid green;  
+}
+
+.background-appointment{
+    border: 1px solid green;
+    background: lightgray;
+}
+
+.dayName{
+    color: green;
+    text-decoration: underline;
+    font-weight: 600;  
+}
+
+mat-form-field {
+    margin: 10px;
+}
+
+.appointmentDetailbtn {
+    padding: 1px;
+    margin: 2px;
+    border: 1px solid;
+    border-radius: 5px;
+    display: block;
+}
+
+.appointmentContent {
+    height: 50%;
+    margin-top: 10%;
+    overflow-y: auto;
+}
+
+.dayNumber {
+    position: absolute;
+    top: 0;
+    left: 45%;
+}
+
+.scheduleBtn{
+    margin-left: 10%;
+}
+
+.text-center{
+    text-align: center;
+}
